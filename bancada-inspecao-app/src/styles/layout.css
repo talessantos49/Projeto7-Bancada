@@ -1,0 +1,92 @@
+.layout header {
+	background: #0066cc;
+	color: white;
+	padding: 0.1rem;
+	text-align: center;
+  }
+  
+  .layout nav a {
+	color: white;
+	margin: 0 1rem;
+	text-decoration: none;
+  }
+  
+  .layout main {
+	padding: 0rem;
+	background-color: #f9f9f9;
+	min-height: 60vh;
+  }
+  
+  .layout footer {
+	background: #eee;
+	text-align: center;
+	padding: 1rem;
+	font-size: 0.9rem;
+  }
+  /* -------------------Botão de Automatico e Manual ------------------------------ */
+  .toggle-container {
+	position: relative;
+	display: inline-block;
+	width: 200px;
+	height: 40px;
+	background-color: #e0e0e0;
+	border-radius: 20px;
+	cursor: pointer;
+	transition: all 0.3s;
+}
+
+.toggle-checkbox {
+	display: none;
+}
+
+.toggle-slider {
+	position: absolute;
+	width: 50%;
+	height: 100%;
+	background-color: #fff;
+	border-radius: 20px;
+	transition: all 0.3s;
+	box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+	left: 0;
+}
+
+.toggle-labels {
+	position: relative;
+	display: flex;
+	height: 100%;
+	font-family: Arial, sans-serif;
+	font-size: 14px;
+}
+
+.toggle-labels span {
+	position: absolute;
+	width: 50%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	user-select: none;
+	transition: all 0.3s;
+}
+
+.manual {
+	left: 0;
+	color: #4043ff;
+}
+
+.automatico {
+	right: 0;
+	color: #757575;
+}
+
+.toggle-checkbox:checked + .toggle-slider {
+	left: 50%;
+}
+
+.toggle-checkbox:checked ~ .toggle-labels .manual {
+	color: #757575;
+}
+
+.toggle-checkbox:checked ~ .toggle-labels .automatico {
+	color: #4043ff;
+}
