@@ -11,8 +11,9 @@ export default function Orbital1000() {
 
   const allChecked = sensors.every(Boolean);
 ////////////////////////////
-  const { radiiConfig } = useContext(ConfigContext);
-  const radii = radiiConfig['1000'];
+  const { configurations } = useContext(ConfigContext);
+  const partConfig = configurations['1000'] || { radii: [250, 180, 150, 120] };
+  const radii = partConfig.radii;
 ////////////////////////////
 
   // Simula dados dos sensores
@@ -44,13 +45,13 @@ export default function Orbital1000() {
     <div className="orbital-container">
       <h2>Orbital 1000</h2>
       <div className="orbital-content">
-        {/* Gráfico à esquerda */}
         <div className="orbital-graph">
-          {/* <ControlledConcentricCircles initialRadii={[250,200,190,170]} strokeWidth={2} /> */}
-          <ControlledConcentricCircles initialRadii={radii} strokeWidth={2} />
+          {/* <ControlledConcentricCircles initialRadii={radii} strokeWidth={2} /> */}
+          <ControlledConcentricCircles key={JSON.stringify(radii)}
+          initialRadii={radii}
+          strokeWidth={2} 
+          />
         </div>
-
-        {/* Painel à direita */}
         <div className="orbital-panel">
           <section className="panel-section">
             <h3>Sensores</h3>
@@ -61,8 +62,8 @@ export default function Orbital1000() {
                     type="checkbox"
                     checked={checked}
                     onChange={() => toggleSensor(idx)}
-                  />
-                  Sensor {idx+1}
+                    />
+                  <span className='sensor-label'>Sensor {idx+1}</span>
                 </label>
               ))}
             </div>

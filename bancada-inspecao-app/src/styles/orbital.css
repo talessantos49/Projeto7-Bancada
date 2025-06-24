@@ -33,17 +33,35 @@
   }
   
   .sensors-grid {
-	display: grid;
-	grid-template-columns: repeat(2, 1fr);
-	gap: 0.5rem;
+	display: flex;
+	flex-direction: column;
+	vertical-align: middle;
+  }
+
+  .sensor-config {
+	display: flex;
+	align-items: flex-start;
+	gap: 2rem;
   }
   
   .sensor-item {
 	display: flex;
 	align-items: center;
-	gap: 0.1rem;
+	width: 20px;
+	white-space: nowrap;
+	vertical-align: middle;
+	line-height: 1.2;
   }
-  
+
+  .sensor-item input[type="checkbox"] {
+	vertical-align: middle;
+  }
+
+  .sensor-label {
+	white-space: nowrap;
+	line-height: 1.2;
+  }
+
   .values-table {
 	width: 100%;
 	border-collapse: collapse;
@@ -116,3 +134,100 @@ path[marker-end] {
   g {
 	transition: transform 0.1s linear;
   }
+
+  /* barra de navegação oculta */
+  .sidebar {
+  width: 60px;
+  transition: width 0.3s ease;
+  overflow-x: hidden;
+}
+
+.sidebar:hover {
+  width: 200px; /* ou o valor expandido desejado */
+}
+
+.sidebar a {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  white-space: nowrap;
+  padding: 0.75rem;
+  color: #ccc;
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+
+.sidebar a.active {
+  background-color: #0056b3;
+  color: #fff;
+  font-weight: bold;
+}
+
+/* botão slider manual e automatico */
+
+.toggle-container {
+position: relative;
+display: inline-block;
+width: 200px;
+height: 40px;
+background-color: #e0e0e0;
+border-radius: 20px;
+cursor: pointer;
+transition: all 0.3s;
+}
+
+.toggle-checkbox {
+display: none;
+}
+
+.toggle-slider {
+position: absolute;
+width: 50%;
+height: 100%;
+background-color: #fff;
+border-radius: 20px;
+transition: all 0.3s;
+box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+left: 0;
+}
+
+.toggle-labels {
+position: relative;
+display: flex;
+height: 100%;
+font-family: Arial, sans-serif;
+font-size: 14px;
+}
+
+.toggle-labels span {
+position: absolute;
+width: 50%;
+height: 100%;
+display: flex;
+align-items: center;
+justify-content: center;
+user-select: none;
+transition: all 0.3s;
+}
+
+.manual {
+left: 0;
+color: #4043ff;
+}
+
+.automatico {
+right: 0;
+color: #757575;
+}
+
+.toggle-checkbox:checked + .toggle-slider {
+left: 50%;
+}
+
+.toggle-checkbox:checked ~ .toggle-labels .manual {
+color: #757575;
+}
+
+.toggle-checkbox:checked ~ .toggle-labels .automatico {
+color: #4043ff;
+}
